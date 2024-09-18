@@ -147,3 +147,95 @@ The low cross-validation **MSE** score reflects **LightGBM**'s robustness, showi
 
 ### **Mean Absolute Error (MAE) of LightGBM**
 The **LightGBM** model excelled in minimizing the **Mean Absolute Error**, registering a remarkable **MAE of 5.534**. This performance is significantly superior compared to the MAEs reported for **Linear Regression** (10.102) and **Random Forest** (9.508). The lower MAE value demonstrates **LightGBM**'s precision in forecasting, suggesting that its predictions are closely aligned with the actual values. This accuracy is crucial in applications where even small deviations can lead to substantial operational inefficiencies or financial losses.
+
+![2](https://github.com/user-attachments/assets/1e46d804-b839-45fa-b4b4-b8a57dc914ae)
+
+### **Mean Squared Error (MSE) of LightGBM**
+**LightGBM** also led in reducing the **Mean Squared Error**, achieving an **MSE of 87.321**, which starkly contrasts with the higher MSEs of 271.007 for **Linear Regression** and 235.163 for **Random Forest**. The MSE metric, which squares the errors before averaging them, penalizes larger errors more than smaller ones, indicating that **LightGBM** effectively limits large prediction errors. This capability makes **LightGBM** particularly valuable in scenarios where outliers or large prediction errors could have disproportionate impacts.
+
+![3](https://github.com/user-attachments/assets/9ca34d15-9ec0-40e5-aa2f-88520bd5ff15)
+
+### **Root Mean Squared Error (RMSE) of LightGBM**
+The **RMSE for LightGBM** was computed to be **9.345**, a testament to the model's consistent and reliable performance. This RMSE is significantly lower than those of the competing models, indicating not only the small variability in prediction errors but also a high level of consistency across different datasets or conditions. RMSE, being the square root of MSE, also makes it a more interpretable metric in terms of the original units of the data, providing a clear indication of the average magnitude of the prediction errors.
+
+![4](https://github.com/user-attachments/assets/8ec845e2-f18a-4e98-bd14-fd621e628641)
+
+### **R-squared Value of LightGBM**
+The **R-squared value** achieved by **LightGBM**, standing at **0.861**, highlights its efficiency in explaining the variance within the dependent variable. This is considerably higher than the values noted for the other models, reflecting **LightGBM**'s ability to capture and explain the variability in the dataset effectively. A high R-squared value is indicative of a model that can not only predict accurately but also reflect the true dynamics of the underlying data, making it extremely effective for both predictive and explanatory purposes.
+
+![5](https://github.com/user-attachments/assets/6067739e-2e69-43d0-aa87-051a01088ce4)
+
+### **Cross-Validation MSE Comparison**
+Cross-validation is crucial for assessing the generalization capabilities of a model beyond the specific data on which it was trained. In this project, we employed **K-Fold cross-validation** to evaluate and compare the robustness of the three models: **LightGBM**, **Linear Regression**, and **Random Forest**.
+
+- **Linear Regression**: The cross-validation **MSE** for the Linear Regression model was **269.704**. This relatively high value suggests that while the model provides a decent fit to the data it has seen, its predictions vary more when confronted with new, unseen data, potentially indicating overfitting or an inability to capture all underlying patterns effectively.
+
+- **Random Forest**: The Random Forest model yielded a cross-validation **MSE** of **234.602**, which is lower than that of Linear Regression but still indicates room for improvement. The reduced error in Random Forest compared to Linear Regression reflects its enhanced capability to handle non-linear relationships and interactions between features, thanks to its ensemble approach.
+
+- **LightGBM**: **LightGBM** showed the best performance with a cross-validation **MSE** of **88.116**. This significantly lower MSE underscores **LightGBM**'s superior generalization ability across different subsets of data. The strength of **LightGBM** lies in its gradient boosting framework, which effectively reduces bias and variance, leading to more accurate and consistent predictions across varied datasets.
+
+### **Analysis**
+The stark contrast in cross-validation MSE values highlights the effectiveness of **LightGBM** in not just fitting the training data but also in maintaining accuracy and reliability when applied to new, unseen data. This robustness makes **LightGBM** particularly suitable for real-world applications where models frequently encounter data that differ from the conditions they were trained on. In contrast, both **Linear Regression** and **Random Forest**, while useful in their own right, display limitations in their generalization capabilities as evidenced by their higher MSE values in cross-validation.
+## **Exhaustive Evaluation of the LightGBM Model**
+
+The exhaustive evaluation of the **LightGBM** model involved a detailed analysis of feature importances, learning curves, and cross-validation performance to assess the model's effectiveness, reliability, and robustness. Below is a summary of each component:
+
+### **1. Feature Importances**
+
+The analysis of **feature importances** revealed which predictors most significantly influence the model's outcomes. Key features such as **"Distance," "Phour," "Dhour,"** and **"Dmin"** were identified as the top contributors to the model’s predictions. Understanding these important features helps prioritize data collection and preprocessing, which can further enhance model performance and efficiency.
+
+### **2. Learning Curves**
+
+**Learning curves** were generated to track how well the LightGBM model learns as the training data increases. The curves demonstrated a consistent decrease in negative MSE for training scores, indicating continuous model improvement. However, the **cross-validation scores plateaued**, suggesting that after a certain point, adding more data does not significantly improve generalization performance. This plateau reflects the model's optimal training size for balancing generalization and efficiency.
+
+### **3. Cross-Validation Performance**
+
+Cross-validation was used to ensure that the model's performance was not specific to a single train-test split. The **cross-validation MSE** offered a reliable estimate of LightGBM's generalization capability. The consistency of MSE across folds underscored the model’s ability to maintain accuracy and reliability, making it suitable for real-world applications where data variability is common.
+
+### **Summary of Evaluation**
+
+The evaluation highlights **LightGBM**'s strengths in:
+- **Feature prioritization** for enhancing accuracy.
+- Efficient learning with an optimal training size.
+- Robust generalization across different subsets of data.
+
+This exhaustive evaluation ensures that **LightGBM** is well-equipped for deployment in real-world scenarios, delivering both accuracy and consistency in predictions.
+
+---
+
+## **Conclusion: Justification for Choosing LightGBM as the Preferred Model**
+
+After a comprehensive evaluation and comparison of multiple machine learning models, **LightGBM** was chosen as the optimal model for predicting key transportation metrics. This decision is supported by the following factors:
+
+### **1. Superior Efficiency**
+**LightGBM** employs a **leaf-wise growth algorithm**, in contrast to the traditional level-wise approach used in other gradient boosting models. This innovation enhances **training speed** and **loss minimization**, making **LightGBM** particularly adept at handling large datasets while being both time-efficient and resource-efficient.
+
+### **2. High Predictive Accuracy**
+**LightGBM** consistently achieved:
+- **Lower Mean Absolute Error (MAE)** and **Mean Squared Error (MSE)** than other models like **Linear Regression** and **Random Forest**.
+- This exceptional accuracy is critical for forecasting scenarios where **complex, non-linear relationships** between variables must be captured.
+
+### **3. Robust Generalization**
+The **cross-validation MSE** was significantly lower for LightGBM, confirming its ability to generalize well across different subsets of data. This is particularly important for ensuring consistent performance in real-world environments where new, unseen data can present challenges.
+
+### **4. Feature Importance Insights**
+The **feature importance analysis** revealed that **LightGBM** effectively prioritized influential predictors, such as **'Distance'** and **'Phour'**, improving both the precision and interpretability of the model’s forecasts.
+
+![6](https://github.com/user-attachments/assets/ec802a68-b336-4591-874b-960477c14e7b)
+
+### **5. Learning Curve Insights**
+The generated **learning curves** showed that **LightGBM** efficiently utilizes increasing amounts of data without overfitting, making it scalable for larger datasets and maintaining sustained performance improvements as more data becomes available.
+
+![7](https://github.com/user-attachments/assets/f86dc8e0-4d1e-42ba-a777-e99d4ac25f82)
+
+---
+
+### **Conclusion**
+
+In summary, **LightGBM**'s blend of:
+- **Scalability** and **efficiency**,
+- **Precision** in handling complex datasets,
+- And **robustness** in generalization
+
+make it the definitive choice for this project. LightGBM not only meets but exceeds the requirements for deployment in operational settings, promising **reliable** and **actionable insights** from the data.
+
