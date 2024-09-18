@@ -88,3 +88,62 @@ The dataset contains over 9.6 million records and 26 variables related to transp
 ## **Model: LightGBM**
 **LightGBM**, short for Light Gradient Boosting Machine, is a highly efficient gradient boosting framework designed for speed and performance. It's part of the Microsoft Distributed Machine Learning Toolkit and is popular for its ability to handle large-scale data efficiently, with a focus on distributed and efficient learning.
 
+![1](https://github.com/user-attachments/assets/6e098d13-934f-4d81-bf7e-888f8b614a7c)
+
+## **Model Development**
+In this project, we explored various machine learning models to predict transportation-related metrics accurately. Our primary goal was to identify a model that not only provides precise predictions but also operates efficiently on large datasets. After rigorous testing and evaluation, the **LightGBM** model emerged as the most effective, outperforming both **Linear Regression** and **Random Forest** models in all key performance metrics.
+
+### **Model Implementation and Evaluation**
+
+#### **1. Linear Regression Model**
+- **Configuration and Training**:  
+  Implemented using a pipeline that included `StandardScaler` for feature normalization and `LinearRegression`. The model was trained on a 30% subset of the data to manage computational resources effectively.
+  
+- **Performance Metrics**:  
+  - **Mean Absolute Error (MAE)**: 10.102  
+  - **Mean Squared Error (MSE)**: 271.007  
+  - **Root Mean Squared Error (RMSE)**: 16.462  
+  - **R-squared**: 0.568  
+  - **Cross-Validation MSE**: 269.704  
+
+#### **2. Random Forest Model**
+- **Configuration and Training**:  
+  Configured with a simplified setup involving fewer trees and reduced depth to speed up training times, applied to a 10% sample of the data.
+  
+- **Performance Metrics**:  
+  - **MAE**: 9.508  
+  - **MSE**: 235.163  
+  - **RMSE**: 15.335  
+  - **R-squared**: 0.625  
+  - **Cross-Validation MSE**: 234.602  
+
+#### **3. LightGBM Model**
+- **Configuration and Training**:  
+  The model was tuned with optimal settings including `num_leaves`, `max_depth`, `learning_rate`, and `n_estimators`. It was trained using a consistent 10% sample of the data for an accurate comparison with other models.
+  
+- **Superior Performance Metrics**:  
+  - **MAE**: 5.534  
+  - **MSE**: 87.321  
+  - **RMSE**: 9.345  
+  - **R-squared**: 0.861  
+  - **Cross-Validation MSE**: 88.116  
+
+## **Comparative Analysis**
+
+| **Model**           | **MAE** | **MSE**  | **RMSE** | **R-squared** |
+|---------------------|---------|----------|----------|---------------|
+| **Linear Regression** | 10.102  | 271.007  | 16.462   | 0.568         |
+| **Random Forest**    | 9.508   | 235.163  | 15.335   | 0.625         |
+| **LightGBM**         | 5.534   | 87.321   | 9.345    | 0.861         |
+
+### **Accuracy and Efficiency**
+- **LightGBM** not only achieved the lowest error metrics (MAE, MSE, RMSE) but also exhibited the highest **R-squared** value among the tested models, indicating its superior accuracy and ability to explain a significant proportion of the variance in the data.
+
+### **Scalability**
+Despite using the same fraction of the dataset for training as the **Random Forest** model, **LightGBM** demonstrated better scalability and efficiency, crucial for handling large-scale data in practical applications.
+
+### **Robustness**
+The low cross-validation **MSE** score reflects **LightGBM**'s robustness, showing minimal overfitting and strong generalization capabilities across different subsets of data.
+
+### **Mean Absolute Error (MAE) of LightGBM**
+The **LightGBM** model excelled in minimizing the **Mean Absolute Error**, registering a remarkable **MAE of 5.534**. This performance is significantly superior compared to the MAEs reported for **Linear Regression** (10.102) and **Random Forest** (9.508). The lower MAE value demonstrates **LightGBM**'s precision in forecasting, suggesting that its predictions are closely aligned with the actual values. This accuracy is crucial in applications where even small deviations can lead to substantial operational inefficiencies or financial losses.
